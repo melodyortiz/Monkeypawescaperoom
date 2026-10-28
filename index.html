@@ -1,198 +1,199 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Monkey's Paw WebQuest</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <style>
-/* Layout: a single reading column, like pages of a Victorian story collection; sections are "chapters", the three mission cards sit side by side, the game is a lamp-lit parlor table. */
+/* Layout: a single candlelit column, like reading by the fire at Laburnum Villa; game is a lit "room" panel. Deliberate single dark theme. */
 :root{
-  --paper:#ECEEE7; --sheet:#F7F8F3; --ink:#1F241E; --muted:#5A6157; --rule:#C9CDBF;
-  --ember:#A3461C; --ember-soft:#F2DDD0; --moss:#3E5A45; --moss-soft:#DCE6DC; --bad:#A12A2A; --good:#2E6B3F;
-  --display:"IM Fell English SC", "IM Fell English", Georgia, serif;
-  --fell:"IM Fell English", Georgia, serif;
+  --night:#15171c;
+  --smoke:#1e2129;
+  --ash:#2b2f3a;
+  --parchment:#e9e1cf;
+  --dim:#a9a293;
+  --candle:#e8a33d;
+  --ember:#c4552f;
+  --moss:#7fa36b;
+  --display:"IM Fell English SC", "Iowan Old Style", Georgia, serif;
+  --fell:"IM Fell English", "Iowan Old Style", Georgia, serif;
   --body:"Literata", Georgia, "Times New Roman", serif;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#16181A; --sheet:#1F2224; --ink:#E7E4DA; --muted:#A3A39A; --rule:#383C3A;
-  --ember:#E58A55; --ember-soft:#3A2519; --moss:#8DB596; --moss-soft:#22302A; --bad:#E77B7B; --good:#7FC495; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#16181A; --sheet:#1F2224; --ink:#E7E4DA; --muted:#A3A39A; --rule:#383C3A;
-  --ember:#E58A55; --ember-soft:#3A2519; --moss:#8DB596; --moss-soft:#22302A; --bad:#E77B7B; --good:#7FC495; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
-.wrap{max-width:860px;margin:0 auto}
-a{color:var(--ember);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:3px solid var(--ember);outline-offset:2px;border-radius:4px}
-h1,h2,h3{text-wrap:balance;font-weight:400}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);
-  display:flex;gap:4px 18px;flex-wrap:wrap;padding-block:10px;font-family:var(--display);font-size:15px;letter-spacing:.04em}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
-nav a{color:var(--muted);text-decoration:none} nav a:hover{color:var(--ember)}
-header{padding-block:48px 28px;border-bottom:1px solid var(--rule)}
-.eyebrow{font-family:var(--display);letter-spacing:.12em;color:var(--ember);font-size:15px;margin:0}
-h1{font-family:var(--fell);font-size:clamp(40px,8vw,72px);line-height:1.02;margin:6px 0 14px}
-.epigraph{font-family:var(--fell);font-style:italic;font-size:21px;max-width:40ch;margin:0;color:var(--muted)}
-.epigraph span{display:block;font-style:normal;font-size:15px;margin-top:6px}
-section{padding-block:36px 8px}
-h2{font-family:var(--display);font-size:30px;letter-spacing:.03em;margin:0 0 12px;display:flex;align-items:baseline;gap:12px}
-h2 small{font-family:var(--body);font-size:14px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-p{max-width:68ch}
-.note{background:var(--sheet);border:1px solid var(--rule);padding:14px 18px;border-radius:6px;max-width:68ch}
-/* mission cards */
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
-@media (max-width:760px){.cards{grid-template-columns:1fr}}
-.card{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.card .num{font-family:var(--fell);font-size:44px;line-height:1;color:var(--ember)}
-.card h3{font-family:var(--display);font-size:21px;margin:0}
-.card p,.card ul{margin:0;font-size:15.5px}
-.card ul{padding-left:18px}
-.card .out{margin-top:auto;border-top:1px dashed var(--rule);padding-top:10px;font-size:14.5px;color:var(--muted)}
-.card .out b{color:var(--ink)}
-/* resources */
-.res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
-@media (max-width:640px){.res{grid-template-columns:1fr}}
-.res a{display:block;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:12px 14px;text-decoration:none;color:var(--ink);min-width:0}
-.res a:hover{border-color:var(--ember)}
-.res .kind{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:600}
-.res .t{display:block;font-weight:600;margin-top:2px}
-.res .d{display:block;font-size:14.5px;color:var(--muted)}
-h3.sub{font-family:var(--display);font-size:20px;margin:22px 0 0}
-/* game */
-.game{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:22px;margin-top:14px}
-.status{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.fingers{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted)}
-.finger{width:16px;height:40px;border-radius:8px 8px 4px 4px;background:var(--moss);transition:transform .4s,background .4s;transform-origin:bottom}
-.finger.down{transform:scaleY(.35) rotate(-30deg);background:var(--bad)}
-.score{font-variant-numeric:tabular-nums;font-family:var(--display);font-size:18px}
-.qtext{font-size:20px;font-family:var(--fell);margin:18px 0 12px}
-.opts{display:grid;gap:10px}
-.opt{font:inherit;font-size:16px;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:10px 14px;cursor:pointer}
-.opt:hover:not(:disabled){border-color:var(--ember)}
-.opt.right{background:var(--moss-soft);border-color:var(--good)}
-.opt.wrong{background:var(--ember-soft);border-color:var(--bad)}
-.opt:disabled{cursor:default}
-.fb{min-height:1.6em;margin:12px 0 0;font-size:15.5px}
-.btn{font:inherit;font-family:var(--display);letter-spacing:.05em;font-size:16px;background:var(--ember);color:var(--sheet);border:0;border-radius:6px;padding:10px 18px;cursor:pointer;margin-top:14px}
-.bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin-top:14px}
-.bar i{display:block;height:100%;background:var(--ember);width:0;transition:width .3s}
-/* rubric */
+body{background:var(--night);color:var(--parchment);font-family:var(--body);font-size:17px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px;
+  background-image:radial-gradient(ellipse 70% 40% at 50% 0%, rgba(232,163,61,.13), transparent 70%);}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--candle)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--candle);outline-offset:3px}
+header.hero{padding-block:56px 28px;text-align:left}
+.eyebrow{font-family:var(--body);text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;color:var(--candle)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,7vw,4.2rem);line-height:1.02;margin:.2em 0 .25em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:1.9rem;margin:0 0 .4em;text-wrap:balance;color:var(--parchment)}
+h3{font-family:var(--fell);font-weight:400;font-size:1.3rem;margin:1.2em 0 .3em}
+.lede{font-family:var(--fell);font-style:italic;font-size:1.25rem;color:var(--dim);max-width:60ch}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+nav.toc a{font-size:14px;text-decoration:none;color:var(--parchment);border:1px solid var(--ash);padding:6px 12px;border-radius:999px}
+nav.toc a:hover{border-color:var(--candle);color:var(--candle)}
+section{padding-block:34px;border-top:1px solid var(--ash)}
+p{margin:.6em 0;max-width:65ch}
+ol,ul{padding-left:1.3em}
+li{margin:.35em 0}
+.step{font-family:var(--body);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.quote{font-family:var(--fell);font-style:italic;font-size:1.2rem;border-left:2px solid var(--candle);padding-left:16px;margin:18px 0;color:var(--parchment)}
+.quote cite{display:block;font-style:normal;font-family:var(--body);font-size:13px;color:var(--dim);margin-top:6px}
+.video{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--smoke);border:1px solid var(--ash);border-radius:10px;padding:18px;margin:16px 0}
+.video .play{width:56px;height:56px;border-radius:50%;background:var(--candle);display:grid;place-items:center;flex:none}
+.video .play svg{fill:var(--night);margin-left:4px}
+.video div{min-width:0;flex:1}
+.btnlink{display:inline-block;background:var(--candle);color:var(--night);text-decoration:none;font-weight:600;padding:9px 16px;border-radius:6px;margin-top:6px}
+.small{font-size:14px;color:var(--dim)}
+dl.vocab{display:grid;grid-template-columns:minmax(110px,max-content) 1fr;gap:8px 18px;margin:12px 0}
+dl.vocab dt{font-family:var(--fell);font-size:1.15rem;color:var(--candle)}
+dl.vocab dd{margin:0;min-width:0}
+@media (max-width:520px){dl.vocab{grid-template-columns:1fr;gap:2px}dl.vocab dd{margin-bottom:10px}}
+
+/* Game */
+#game{background:var(--smoke);border:1px solid var(--ash);border-radius:12px;padding:22px;margin-top:18px}
+.locks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.lock{flex:1 1 140px;border:1px solid var(--ash);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--dim);display:flex;gap:10px;align-items:center}
+.lock .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--dim);flex:none}
+.lock.on{border-color:var(--candle);color:var(--parchment)}
+.lock.on .dot{border-color:var(--candle)}
+.lock.done{border-color:var(--moss);color:var(--parchment)}
+.lock.done .dot{background:var(--moss);border-color:var(--moss)}
+.room-title{font-family:var(--display);font-size:1.6rem;margin:0}
+.room-sub{font-family:var(--fell);font-style:italic;color:var(--dim);margin:2px 0 14px}
+.q{font-weight:600;margin:14px 0 10px}
+.qcount{font-size:13px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.choices{display:grid;gap:8px}
+.choice{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;padding:11px 14px;border:1px solid var(--ash);border-radius:8px;background:var(--night);color:var(--parchment);font-family:var(--body);font-size:16px;line-height:1.4}
+.choice:hover{border-color:var(--candle)}
+.choice:focus-visible{outline:2px solid var(--candle);outline-offset:2px}
+.choice.wrong{border-color:var(--ember);color:var(--dim);cursor:default}
+.choice.right{border-color:var(--moss);background:rgba(127,163,107,.12)}
+.feedback{min-height:1.6em;margin-top:12px;font-size:15px}
+.feedback.bad{color:#e88a6a}
+.feedback.good{color:#a9cf93}
+.gbtn{all:unset;cursor:pointer;background:var(--candle);color:var(--night);font-weight:600;padding:10px 18px;border-radius:6px;font-family:var(--body);font-size:15px;margin-top:12px;display:inline-block}
+.gbtn:focus-visible{outline:2px solid var(--parchment);outline-offset:3px}
+.gbtn.ghost{background:transparent;color:var(--parchment);border:1px solid var(--ash)}
+.keyword{font-family:var(--display);font-size:2rem;color:var(--candle);letter-spacing:.08em}
+.order{display:grid;gap:8px;margin:12px 0}
+.order li{list-style:none;display:flex;gap:10px;align-items:center;background:var(--night);border:1px solid var(--ash);border-radius:8px;padding:8px 10px}
+.order ol{padding:0;margin:0}
+.order .txt{flex:1;min-width:0;font-size:15px}
+.order .mv{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--ash);border-radius:6px;color:var(--parchment)}
+.order .mv:focus-visible{outline:2px solid var(--candle)}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:1.3rem;background:var(--night);border:1px dashed var(--candle);padding:8px 14px;border-radius:6px;display:inline-block;letter-spacing:.1em}
+.escape{text-align:center;padding:12px 0}
+.mistakes{font-size:13px;color:var(--dim)}
+
+table.rubric{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
 .tablewrap{overflow-x:auto;margin-top:12px}
-table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px;background:var(--sheet)}
-th,td{border:1px solid var(--rule);padding:9px 10px;text-align:left;vertical-align:top}
-th{font-family:var(--display);font-weight:400;font-size:16px;background:var(--paper)}
-footer{border-top:1px solid var(--rule);margin-top:40px;padding-top:14px;font-size:14px;color:var(--muted)}
-@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+table.rubric th,table.rubric td{border:1px solid var(--ash);padding:9px 10px;vertical-align:top;text-align:left}
+table.rubric th{font-family:var(--body);font-weight:600;background:var(--smoke)}
+table.rubric td:first-child{font-weight:600}
+.teacher{background:var(--smoke);border:1px solid var(--ash);border-radius:10px;padding:16px 18px;font-size:15px}
+@media (prefers-reduced-motion:no-preference){.room{animation:fade .4s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}}
+.embed{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;margin:16px 0 4px;border:1px solid var(--ash);border-radius:10px;overflow:hidden;background:var(--smoke)}
+.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 </style>
-</head><body>
-
+</head>
+<body>
 <div class="wrap">
-<nav aria-label="WebQuest sections">
-  <a href="#intro">Introduction</a><a href="#task">Task</a><a href="#process">Process</a><a href="#resources">Resources</a><a href="#game">Game</a><a href="#evaluation">Evaluation</a><a href="#conclusion">Conclusion</a>
-</nav>
-
-<header>
-  <p class="eyebrow">A WebQuest · Short Story Unit</p>
+<header class="hero">
+  <div class="eyebrow">ELA WebQuest · Grades 7–8 · W. W. Jacobs, 1902</div>
   <h1>The Monkey's Paw</h1>
-  <p class="epigraph">"It had a spell put on it by an old fakir… to show that fate ruled people's lives."<span>W. W. Jacobs, 1902</span></p>
+  <p class="lede">Three men may have three wishes from it. Watch the story, escape the cottage, and decide for yourself whether fate can be bargained with.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#intro">Introduction</a><a href="#task">Task</a><a href="#process">Process</a><a href="#play">Escape Room</a><a href="#evaluation">Evaluation</a><a href="#conclusion">Conclusion</a>
+  </nav>
 </header>
 
 <section id="intro">
   <h2>Introduction</h2>
-  <p>A dried-up monkey's paw arrives at a quiet house on a stormy night. It grants three wishes to three different people. Every wish comes true, but never the way anyone hoped.</p>
-  <p>In this WebQuest you will read W. W. Jacobs's famous horror story, research the man who wrote it, hunt for clues the author planted, and decide for yourself: <b>is it ever safe to wish against fate?</b></p>
+  <p>It is a cold, wet night at Laburnum Villa. Mr. White and his son Herbert are playing chess while Mrs. White knits by the fire. Then a visitor arrives: Sergeant-Major Morris, home after twenty-one years in India, carrying a small, dried-up paw.</p>
+  <div class="quote">"It had a spell put on it by an old fakir… He wanted to show that fate ruled people's lives, and that those who interfered with it did so to their sorrow."<cite>Sergeant-Major Morris, Part I</cite></div>
+  <p>If you could make three wishes, what would you ask for? And what might it cost you?</p>
 </section>
 
 <section id="task">
-  <h2>The Task</h2>
-  <p>Your team of three will become <b>Paw Investigators</b>. Each investigator takes one Mission Card below. When all three missions are done, your team will combine your findings into one final product: a <b>Case File</b> (poster, slideshow, or Google Doc) that answers the question <i>"Who is to blame for what happened to the White family?"</i></p>
-  <div class="note"><b>Before you start:</b> read or listen to the full story using the links in <a href="#resources">Resources</a>. Then play the <a href="#game">Paw Trivia game</a> to check your understanding.</div>
+  <h2>Your Task</h2>
+  <p>You will watch a film version of "The Monkey's Paw," learn key vocabulary, and then play an escape room that tests what you know about the plot, characters, and literary devices. To finish, you will write a <strong>fourth wish</strong>: a new short scene in which someone finds the paw and makes a wish of their own.</p>
 </section>
 
 <section id="process">
-  <h2>The Process <small>3 mission cards</small></h2>
-  <p>Read your card, visit the linked resources, and complete the output. Share with your team when you finish.</p>
-  <div class="cards">
-    <article class="card">
-      <div class="num">I</div>
-      <h3>The Historian</h3>
-      <p>Find out about the author and the world of the story.</p>
-      <ul>
-        <li>Read about <a target="_blank" href="https://en.wikipedia.org/wiki/W._W._Jacobs" target="_blank" rel="noopener">W. W. Jacobs</a> and <a href="https://www.britannica.com/biography/W-W-Jacobs" target="_blank" rel="noopener">his Britannica entry</a>. What was his day job? When was he born?</li>
-        <li>Sergeant-Major Morris served in India. Skim <a target="_blank" href="https://en.wikipedia.org/wiki/British_Raj" target="_blank" rel="noopener">British Raj</a>. Why would a British soldier be there in 1902?</li>
-        <li>Read the <a target="_blank" href="https://www.sparknotes.com/short-stories/the-monkeys-paw/context/" target="_blank" rel="noopener">story's background</a>.</li>
-      </ul>
-      <p class="out"><b>Output:</b> 5 facts about the author and his time, plus 1 sentence on how the setting adds to the creepy mood.</p>
-    </article>
-    <article class="card">
-      <div class="num">II</div>
-      <h3>The Detective</h3>
-      <p>Hunt for <b>foreshadowing</b>: clues that warn the reader something bad is coming.</p>
-      <ul>
-        <li>Reread Part I of the <a target="_blank" href="https://americanliterature.com/author/w-w-jacobs/short-story/the-monkeys-paw" target="_blank" rel="noopener">story</a>.</li>
-        <li>Find at least <b>4 clues</b> (hint: Morris's face, the fire, the face in the flames, Herbert's jokes).</li>
-        <li>For each clue, explain what it hints at later in the story.</li>
-      </ul>
-      <p class="out"><b>Output:</b> a 4-row clue chart: <i>Quote → What it foreshadows → Page/Part</i>.</p>
-    </article>
-    <article class="card">
-      <div class="num">III</div>
-      <h3>The Wish Lawyer</h3>
-      <p>The paw twists every wish. Your job: beat it.</p>
-      <ul>
-        <li>Look closely at how each of the three wishes went wrong.</li>
-        <li>Rewrite Mr. White's <b>first wish</b> so the paw cannot twist it. Then trade with a teammate and try to find a loophole in each other's wish.</li>
-        <li>Watch one <a href="#videos">film version</a> and note one thing it changed from the text.</li>
-      </ul>
-      <p class="out"><b>Output:</b> your "loophole-proof" wish, the loophole your partner found, and 2 sentences comparing the film and the story.</p>
-    </article>
-  </div>
+  <h2>The Process</h2>
+
+  <div class="step">Step 1</div>
+  <h3>Watch the story</h3>
+  <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/9h2dmgf8cPk" title="The Monkey's Paw short film" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  <p class="small">Video not playing? <a href="https://www.youtube.com/watch?v=9h2dmgf8cPk" target="_blank" rel="noopener">Open it on YouTube</a> or try the <a href="https://www.youtube.com/watch?v=JJQnQnKF8-8" target="_blank" rel="noopener">animated adaptation</a>.</p>
+  <p><strong>While you watch</strong>, answer these on your paper or in your notebook:</p>
+  <ol>
+    <li>Describe the setting in Part I. How does the weather set the mood?</li>
+    <li>What warning does Sergeant-Major Morris give about the paw? Why does he throw it into the fire?</li>
+    <li>What is the first wish, and how does it come true?</li>
+    <li>Who pushes for the second wish? Why?</li>
+    <li>What do you think is knocking at the door? Use evidence to explain.</li>
+    <li>Why does Mr. White make the third wish so quickly?</li>
+  </ol>
+
+  <div class="step" style="margin-top:28px">Step 2</div>
+  <h3>Learn the vocabulary</h3>
+  <dl class="vocab">
+    <dt>fakir</dt><dd>a holy man in India who lives by begging and is believed to have special powers</dd>
+    <dt>credulity</dt><dd>a readiness to believe things too easily</dd>
+    <dt>maligned</dt><dd>spoken badly about; unfairly criticized</dd>
+    <dt>compensation</dt><dd>money paid to make up for a loss or injury</dd>
+    <dt>oppressive</dt><dd>heavy and hard to bear, like a gloomy silence</dd>
+    <dt>apathy</dt><dd>a lack of interest or feeling</dd>
+    <dt>prosaic</dt><dd>ordinary; dull and everyday</dd>
+    <dt>foreshadowing</dt><dd>hints in a story about what will happen later</dd>
+    <dt>situational irony</dt><dd>when what happens is the opposite of what was expected</dd>
+  </dl>
+
+  <div class="step" style="margin-top:28px">Step 3</div>
+  <h3>Play the escape room</h3>
+  <p>Scroll down to <a href="#play">The Escape Room</a>. Each wish is a locked room. Answer every question in a room correctly to earn its key word. Unlock all three, then put the story in order to escape. Write down your three key words and your final escape code.</p>
+
+  <div class="step" style="margin-top:28px">Step 4</div>
+  <h3>Write the fourth wish</h3>
+  <p>Imagine the paw is found years later by someone new. Write a scene of 250–400 words in which this person makes a wish. Your scene must:</p>
+  <ul>
+    <li>Include at least <strong>one example of foreshadowing</strong>.</li>
+    <li>End with <strong>situational irony</strong>: the wish comes true in a way the character did not expect.</li>
+    <li>Use <strong>at least three</strong> vocabulary words from Step 2.</li>
+    <li>Show the story's theme: interfering with fate brings sorrow.</li>
+  </ul>
 </section>
 
-<section id="resources">
-  <h2>Resources</h2>
-  <h3 class="sub">Read &amp; Listen</h3>
-  <div class="res">
-    <a target="_blank" href="https://americanliterature.com/author/w-w-jacobs/short-story/the-monkeys-paw" target="_blank" rel="noopener"><span class="kind">Full text</span><span class="t">The Monkey's Paw: read online</span><span class="d">American Literature · Parts I–III with vocabulary help</span></a>
-    <a target="_blank" href="https://www.gutenberg.org/ebooks/12122" target="_blank" rel="noopener"><span class="kind">Free eBook</span><span class="t">Project Gutenberg edition</span><span class="d">Original 1902 collection, free download</span></a>
-    <a target="_blank" href="https://librivox.org/author/924" target="_blank" rel="noopener"><span class="kind">Audio</span><span class="t">LibriVox recordings of W. W. Jacobs</span><span class="d">Free public-domain audiobooks</span></a>
-    <a target="_blank" href="https://www.sparknotes.com/short-stories/the-monkeys-paw/context/" target="_blank" rel="noopener"><span class="kind">Background</span><span class="t">Context for the story</span><span class="d">SparkNotes · author and historical setting</span></a>
-  </div>
-  <h3 class="sub" id="videos">Watch</h3>
-  <div class="res">
-    <a target="_blank" href="https://www.youtube.com/watch?v=JJQnQnKF8-8" target="_blank" rel="noopener"><span class="kind">Video · animated</span><span class="t">The Monkey's Paw: Adapted and Animated</span><span class="d">Super Horror Show · YouTube</span></a>
-    <a target="_blank" href="https://www.youtube.com/watch?v=9h2dmgf8cPk" target="_blank" rel="noopener"><span class="kind">Video · film</span><span class="t">The Monkey's Paw short story film (1982)</span><span class="d">Live-action classroom film · YouTube</span></a>
-  </div>
-  <h3 class="sub">Research</h3>
-  <div class="res">
-    <a target="_blank" href="https://en.wikipedia.org/wiki/W._W._Jacobs" target="_blank" rel="noopener"><span class="kind">Author</span><span class="t">W. W. Jacobs</span><span class="d">Wikipedia</span></a>
-    <a target="_blank" href="https://www.britannica.com/biography/W-W-Jacobs" target="_blank" rel="noopener"><span class="kind">Author</span><span class="t">W. W. Jacobs</span><span class="d">Encyclopaedia Britannica</span></a>
-  </div>
-</section>
+<section id="play">
+  <h2>The Escape Room</h2>
+  <p>You are locked inside Laburnum Villa. Something is knocking at the door. Three wishes stand between you and the empty road outside.</p>
 
-<section id="game">
-  <h2>Paw Trivia</h2>
-  <p>The paw has three fingers raised. Every wrong answer curls one down. Lose all three and the paw wins. Answer all 10 to beat it.</p>
-  <div class="game" id="gameBox" aria-live="polite">
-    <div class="status">
-      <div class="fingers" aria-label="Fingers left"><span class="finger" id="f0"></span><span class="finger" id="f1"></span><span class="finger" id="f2"></span><span id="fLabel">3 wishes left</span></div>
-      <div class="score" id="score">Question 1 of 10</div>
-    </div>
-    <div class="bar"><i id="bar"></i></div>
-    <div id="qArea"></div>
+  <div id="game" aria-live="polite">
+    <div class="locks" id="locks"></div>
+    <div id="stage"></div>
   </div>
 </section>
 
 <section id="evaluation">
   <h2>Evaluation</h2>
+  <p>Your teacher will use this rubric to grade your work.</p>
   <div class="tablewrap">
-  <table>
-    <thead><tr><th>Criteria</th><th>4 · Excellent</th><th>3 · Good</th><th>2 · Developing</th><th>1 · Beginning</th></tr></thead>
+  <table class="rubric">
+    <thead><tr><th>Criteria</th><th>4 · Excellent</th><th>3 · Proficient</th><th>2 · Developing</th><th>1 · Beginning</th></tr></thead>
     <tbody>
-      <tr><td><b>Mission output</b></td><td>All parts complete and accurate</td><td>Most parts complete</td><td>Some parts missing</td><td>Little completed</td></tr>
-      <tr><td><b>Text evidence</b></td><td>Strong quotes explain every claim</td><td>Quotes support most claims</td><td>Few quotes or weak links</td><td>No evidence from the story</td></tr>
-      <tr><td><b>Inference &amp; analysis</b></td><td>Insightful ideas about foreshadowing, mood, or fate</td><td>Clear, logical ideas</td><td>Mostly summary</td><td>Ideas unclear</td></tr>
-      <tr><td><b>Case File &amp; teamwork</b></td><td>Organized, creative, every member contributed</td><td>Organized, most contributed</td><td>Somewhat organized</td><td>Disorganized or incomplete</td></tr>
+      <tr><td>Video questions</td><td>All 6 answered in complete sentences with evidence</td><td>5–6 answered; some evidence</td><td>3–4 answered; little evidence</td><td>Fewer than 3 answered</td></tr>
+      <tr><td>Escape room</td><td>Escaped; code recorded</td><td>Two rooms unlocked</td><td>One room unlocked</td><td>No rooms unlocked</td></tr>
+      <tr><td>Foreshadowing</td><td>Clear, well-placed hint that pays off</td><td>Hint present and connects to the ending</td><td>Hint is unclear</td><td>No foreshadowing</td></tr>
+      <tr><td>Situational irony</td><td>Twist ending is surprising and logical</td><td>Ending is ironic</td><td>Ending is somewhat unexpected</td><td>No irony</td></tr>
+      <tr><td>Vocabulary &amp; conventions</td><td>3+ words used correctly; few errors</td><td>3 words used; some errors</td><td>1–2 words used; errors distract</td><td>No vocabulary; many errors</td></tr>
     </tbody>
   </table>
   </div>
@@ -200,55 +201,109 @@ footer{border-top:1px solid var(--rule);margin-top:40px;padding-top:14px;font-si
 
 <section id="conclusion">
   <h2>Conclusion</h2>
-  <p>"The Monkey's Paw" has been retold in films, TV shows, and cartoons for more than 120 years because its warning still lands: <i>be careful what you wish for.</i> Think about it one last time. If someone handed you the paw today, would you make a wish? Write your answer in 3–5 sentences and use one detail from the story to explain why.</p>
+  <p>The Whites got exactly what they asked for, and it destroyed them. W. W. Jacobs shows that wishes can't change fate without a price. Think about it one more time: if the paw were sitting on your table right now, would you pick it up?</p>
 </section>
-
-<footer>"The Monkey's Paw" by W. W. Jacobs (1902) is in the public domain. Links open outside this page.</footer>
 </div>
 
 <script>
-const Q=[
- {q:"Where does the story take place?",o:["A castle in Scotland","Laburnum Villa, the Whites' home","A ship returning from India","Herbert's factory"],a:1,e:"The Whites live at Laburnum Villa, a lonely house on a muddy road."},
- {q:"Who brings the monkey's paw to the White family?",o:["Herbert","A man from Maw and Meggins","Sergeant-Major Morris","An old fakir"],a:2,e:"Morris, back from 21 years in India, brings it."},
- {q:"What does Morris do with the paw after explaining its power?",o:["Sells it to Mr. White","Throws it into the fire","Buries it in the garden","Makes a wish on it"],a:1,e:"He tosses it in the fire, a big clue that it is dangerous."},
- {q:"What is the White family's first wish?",o:["To be emperor","For Herbert to come home","Two hundred pounds","A bigger house"],a:2,e:"Mr. White wishes for 200 pounds to pay off the house."},
- {q:"How do the Whites finally receive the money?",o:["They find it under the paw","Herbert wins it","Compensation for Herbert's death","Morris mails it"],a:2,e:"Maw and Meggins pays 200 pounds after Herbert dies in the machinery."},
- {q:"Herbert seeing a horrible face in the fire is an example of…",o:["Foreshadowing","Flashback","Rhyme","Comic relief"],a:0,e:"It hints at the horror that is coming."},
- {q:"Who insists on making the second wish?",o:["Mr. White","Mrs. White","Morris","Herbert"],a:1,e:"Mrs. White begs her husband to wish Herbert alive."},
- {q:"What is most likely Mr. White's third wish?",o:["For more money","For Herbert to be gone again","To forget everything","For Morris to return"],a:1,e:"The knocking stops and the road is empty, so he wished Herbert away."},
- {q:"The money arriving because Herbert died is an example of…",o:["Situational irony","Alliteration","Personification","A simile"],a:0,e:"The wish came true in the opposite way they expected."},
- {q:"What is the story's main theme?",o:["Hard work pays off","Be careful what you wish for","Friends are forever","Travel is dangerous"],a:1,e:"Interfering with fate brings sorrow."}
+(function(){
+const ROOMS=[
+ {title:"Room I · The Visitor", sub:"A wet night, a chess game, and a soldier's story.", key:"GOLD", qs:[
+  {q:"Where does the story take place?", a:["A hotel in London","Laburnum Villa, the Whites' home","An army camp in India","Maw and Meggins factory"], c:1, why:"The Whites live at Laburnum Villa, a lonely house on a muddy road."},
+  {q:"Who brings the monkey's paw to the Whites' home?", a:["Herbert White","A man from Maw and Meggins","Sergeant-Major Morris","An old fakir"], c:2, why:"Sergeant-Major Morris brings it back from India."},
+  {q:"Why did the fakir put a spell on the paw?", a:["To make its owner rich","To show that fate rules people's lives","To protect soldiers in battle","To punish thieves"], c:1, why:"The fakir wanted to show that those who interfere with fate do so to their sorrow."},
+  {q:"What does Morris do with the paw when Mr. White seems interested?", a:["Sells it to him","Throws it into the fire","Hides it in his coat","Buries it in the garden"], c:1, why:"Morris tosses it on the fire, and Mr. White pulls it out."},
+  {q:"The first owner's third wish was for death. This detail is an example of…", a:["Foreshadowing","Simile","Flashback","Comic relief"], c:0, why:"It hints that the wishes will end in tragedy."}
+ ]},
+ {title:"Room II · The First Wish", sub:"Two hundred pounds, and a knock from the factory.", key:"GRIEF", qs:[
+  {q:"What does Mr. White wish for first?", a:["A new house","Two hundred pounds","His son's safety","To be king"], c:1, why:"He wishes for £200 to pay off the house."},
+  {q:"How does the first wish come true?", a:["Mr. White wins a lottery","They find money under the floor","The company pays compensation after Herbert's death","Morris sends a check"], c:2, why:"Maw and Meggins pays £200 after Herbert is caught in the machinery."},
+  {q:"Herbert jokes that the money might be found 'in the middle of your bed.' Why is this ironic?", a:["He gets the money himself","His joking hides how deadly the wish will be","The money never comes","He wanted to buy a bed"], c:1, why:"He laughs at the wish that will cost him his life."},
+  {q:"The word 'compensation' means…", a:["A compliment","Money paid to make up for a loss","A kind of contract","A punishment"], c:1, why:"Compensation is payment for a loss or injury."},
+  {q:"Which best describes Mrs. White after Herbert's funeral?", a:["Relieved","Grieving and desperate","Angry at Morris only","Calm and cheerful"], c:1, why:"Her grief drives her to demand the second wish."}
+ ]},
+ {title:"Room III · The Knock", sub:"Bring him back. Then, the knocking at the door.", key:"SILENCE", qs:[
+  {q:"Who insists on making the second wish?", a:["Mr. White","Mrs. White","Sergeant-Major Morris","Herbert"], c:1, why:"Mrs. White begs her husband to wish their son alive again."},
+  {q:"Why is Mr. White afraid of the second wish?", a:["He thinks it won't work","He remembers how badly Herbert was injured","He wants to save it for money","Morris told him not to"], c:1, why:"Herbert was so mangled that his father could only identify him by his clothing."},
+  {q:"What does Mr. White do while his wife unbolts the door?", a:["Runs outside","Calls the police","Finds the paw and makes the third wish","Hides upstairs"], c:2, why:"He makes the third wish just before the door opens."},
+  {q:"What is the most likely third wish?", a:["For more money","For the knocking thing to go away","For Morris to return","To forget everything"], c:1, why:"The knocking stops, and the road outside is empty."},
+  {q:"Which theme fits the story best?", a:["Hard work always pays off","Be careful what you wish for","Family members should never argue","Money is the key to happiness"], c:1, why:"Interfering with fate brings sorrow."}
+ ]}
 ];
-let i=0,lives=3,correct=0,locked=false;
-const area=document.getElementById('qArea');
+const EVENTS=[
+ "Morris tells the story of the paw and throws it in the fire.",
+ "Mr. White wishes for two hundred pounds.",
+ "A man from Maw and Meggins brings terrible news.",
+ "Mrs. White begs for a second wish.",
+ "A knock is heard at the door in the night.",
+ "Mr. White makes the third wish and the road is empty."
+];
+let st={room:0,q:0,mistakes:0,unlocked:[],phase:"intro",order:null};
+const $locks=document.getElementById("locks"),$stage=document.getElementById("stage");
+try{ if(window.claude?.hot?.data?.st) st=window.claude.hot.data.st; }catch(e){}
+try{ window.claude?.hot?.snapshot?.(()=>({st})); }catch(e){}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function drawLocks(){
+  const names=["Wish I","Wish II","Wish III","The Door"];
+  $locks.innerHTML=names.map((n,i)=>{
+    let cls="lock"; if(i<st.unlocked.length) cls+=" done"; else if((st.phase==="room"&&i===st.room)||(st.phase==="final"&&i===3)) cls+=" on";
+    if(st.phase==="escaped") cls="lock done";
+    return `<div class="${cls}"><span class="dot"></span>${n}${i<3&&st.unlocked[i]?": "+st.unlocked[i]:""}</div>`;}).join("");
+}
 function render(){
-  document.getElementById('score').textContent=`Question ${Math.min(i+1,Q.length)} of ${Q.length}`;
-  document.getElementById('bar').style.width=(i/Q.length*100)+'%';
-  const c=Q[i];locked=false;
-  area.innerHTML=`<p class="qtext">${c.q}</p><div class="opts">${c.o.map((t,k)=>`<button class="opt" id="opt${k}" data-k="${k}">${t}</button>`).join('')}</div><p class="fb" id="fb"></p>`;
-  area.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>pick(+b.dataset.k)));
+  drawLocks();
+  if(st.phase==="intro"){
+    $stage.innerHTML=`<p class="room-title">Laburnum Villa</p><p class="room-sub">Three rooms. Five questions each. One door.</p>
+    <p>Answer every question correctly to earn each room's key word. A wrong answer will be marked so you can try again. Ready?</p>
+    <button class="gbtn" id="go">Pick up the paw</button>`;
+    document.getElementById("go").onclick=()=>{st.phase="room";render();};
+  } else if(st.phase==="room"){
+    const R=ROOMS[st.room],Q=R.qs[st.q];
+    $stage.innerHTML=`<div class="room"><p class="room-title">${R.title}</p><p class="room-sub">${R.sub}</p>
+    <div class="qcount">Question ${st.q+1} of ${R.qs.length}</div><p class="q">${esc(Q.q)}</p>
+    <div class="choices">${Q.a.map((t,i)=>`<button class="choice" data-i="${i}">${esc(t)}</button>`).join("")}</div>
+    <div class="feedback" id="fb"></div></div>`;
+    $stage.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{
+      const i=+b.dataset.i,fb=document.getElementById("fb");
+      if(b.classList.contains("wrong")||$stage.querySelector(".choice.right")) return;
+      if(i===Q.c){
+        b.classList.add("right");fb.className="feedback good";fb.textContent="Correct. "+Q.why;
+        const nb=document.createElement("button");nb.className="gbtn";nb.textContent=st.q<R.qs.length-1?"Next question":"Unlock the room";
+        nb.onclick=()=>{ if(st.q<R.qs.length-1){st.q++;} else {st.phase="key";} render(); };
+        fb.after(nb);nb.focus();
+      } else {
+        st.mistakes++;b.classList.add("wrong");b.setAttribute("aria-disabled","true");fb.className="feedback bad";fb.textContent="The paw twists in your hand. Try again.";
+      }
+    });
+  } else if(st.phase==="key"){
+    const R=ROOMS[st.room];
+    $stage.innerHTML=`<div class="room escape"><p class="room-sub">The lock clicks open. Write down your key word:</p><div class="keyword">${R.key}</div>
+    <button class="gbtn" id="nx">${st.room<2?"Enter the next room":"Go to the door"}</button></div>`;
+    document.getElementById("nx").onclick=()=>{st.unlocked.push(R.key); if(st.room<2){st.room++;st.q=0;st.phase="room";} else {st.phase="final";st.order=shuffle(EVENTS.map((_,i)=>i));} render();};
+  } else if(st.phase==="final"){
+    $stage.innerHTML=`<div class="room"><p class="room-title">The Door</p><p class="room-sub">The knocking grows louder. Put the events in the order they happen to break the final lock.</p>
+    <ol class="order" id="ord">${st.order.map((e,pos)=>`<li><span class="txt">${esc(EVENTS[e])}</span>
+      <button class="mv" data-p="${pos}" data-d="-1" aria-label="Move up">▲</button><button class="mv" data-p="${pos}" data-d="1" aria-label="Move down">▼</button></li>`).join("")}</ol>
+    <button class="gbtn" id="chk">Turn the key</button><div class="feedback" id="fb"></div></div>`;
+    $stage.querySelectorAll(".mv").forEach(b=>b.onclick=()=>{const p=+b.dataset.p,d=+b.dataset.d,q=p+d; if(q<0||q>=st.order.length) return; [st.order[p],st.order[q]]=[st.order[q],st.order[p]]; render(); const nb=$stage.querySelector(`.mv[data-p="${q}"][data-d="${d}"]`); nb&&nb.focus();});
+    document.getElementById("chk").onclick=()=>{
+      const right=st.order.filter((e,i)=>e===i).length;
+      if(right===EVENTS.length){st.phase="escaped";render();}
+      else {st.mistakes++;const fb=document.getElementById("fb");fb.className="feedback bad";fb.textContent=`The lock holds. ${right} of ${EVENTS.length} events are in the right place.`;}
+    };
+  } else if(st.phase==="escaped"){
+    $stage.innerHTML=`<div class="room escape"><p class="room-title">You escaped</p>
+    <p class="room-sub">The knocking stops. The door swings open on a quiet, empty road.</p>
+    <p>Your escape code:</p><div class="code">FATE-202</div>
+    <p class="mistakes">Key words: ${st.unlocked.join(" · ")} &nbsp;|&nbsp; Wrong tries: ${st.mistakes}</p>
+    <p>Write your code, key words, and number of wrong tries on your paper. Then move on to Step 4.</p>
+    <button class="gbtn ghost" id="again">Play again</button></div>`;
+    document.getElementById("again").onclick=()=>{st={room:0,q:0,mistakes:0,unlocked:[],phase:"intro",order:null};render();};
+  }
 }
-function pick(k){
-  if(locked)return;locked=true;
-  const c=Q[i],btns=area.querySelectorAll('.opt'),fb=document.getElementById('fb');
-  btns.forEach(b=>b.disabled=true);btns[c.a].classList.add('right');
-  if(k===c.a){correct++;fb.innerHTML='<b>Correct.</b> '+c.e}
-  else{btns[k].classList.add('wrong');lives--;document.getElementById('f'+(2-lives)).classList.add('down');
-    document.getElementById('fLabel').textContent=lives+(lives===1?' wish left':' wishes left');
-    fb.innerHTML='<b>The paw twists…</b> '+c.e}
-  const nb=document.createElement('button');nb.className='btn';
-  const over=lives===0||i===Q.length-1;
-  nb.textContent=over?'See result':'Next question';
-  nb.addEventListener('click',()=>{if(over)end();else{i++;render()}});
-  area.appendChild(nb);nb.focus();
-}
-function end(){
-  document.getElementById('bar').style.width=lives?'100%':(i+1)/Q.length*100+'%';
-  const won=lives>0;
-  area.innerHTML=`<p class="qtext">${won?'You beat the paw!':'The paw wins this time.'}</p><p>You answered <b>${correct}</b> of ${won?Q.length:i+1} correctly${won?` with ${lives} ${lives===1?'wish':'wishes'} to spare`:''}. ${won?'Show your teacher this screen.':'Review the story and try again.'}</p>`;
-  const b=document.createElement('button');b.className='btn';b.textContent='Play again';b.addEventListener('click',reset);area.appendChild(b);
-}
-function reset(){i=0;lives=3;correct=0;[0,1,2].forEach(n=>document.getElementById('f'+n).classList.remove('down'));document.getElementById('fLabel').textContent='3 wishes left';render()}
+function shuffle(a){let ok=false;while(!ok){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} ok=a.some((e,i)=>e!==i);}return a;}
 render();
+})();
 </script>
-</body></html>
+</body>
+</html>
